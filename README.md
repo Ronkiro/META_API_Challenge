@@ -54,5 +54,28 @@ a execução deste servidor.
 Caso tenha interesse, você pode instalar o certificado do aplicativo usando
 `dotnet dev-certs https --trust`.
 
-
 **Para mais informações sobre o uso da API, consulte a sua especificação (*contato.yaml*)**
+
+*OBS*: Toda requisição deverá ter um parâmetro "Authorization: TESTAPI" incluída em
+seu cabeçalho para permitir sua execução. Requisições sem este cabeçalho retornarão
+401 (Not Authorized).
+
+### Exemplo de requisição
+```
+GET /Contato/1
+
+HEADERS: - Authorization: TESTAPI
+```
+
+### Exemplo de resposta
+```
+[
+  {
+    "id": "string",
+    "nome": "string",
+    "canal": "string",
+    "valor": "string",
+    "obs": "string"
+  }
+]
+```
