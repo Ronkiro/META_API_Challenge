@@ -1,0 +1,205 @@
+openapi: 3.0.0
+info:
+  title: Contato
+  description: API para um serviço de gestão de contatos
+  contact:
+    name: Developer Team
+    url: http://devtest.com
+    email: dev.team@devtest.com
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+paths:
+  /{idContato}:
+    get:
+      summary: Retorna um único objeto do tipo Contato
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contato'
+        401:
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          content:
+            application/json:
+              schema:
+                type: string
+    put:
+      summary: Altera um objeto do tipo Contato
+      responses:
+        204:
+          content:
+            application/json:
+              schema:
+                type: string
+        400:
+          content:
+            application/json:
+              schema:
+                type: string
+        401:
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContatoUpdate'
+        required: true
+    delete:
+      summary: Apaga um objeto do tipo Contato
+      responses:
+        204:
+          content:
+            application/json:
+              schema:
+                type: string
+        401:
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          content:
+            application/json:
+              schema:
+                type: string
+    parameters:
+    - name: idContato
+      in: path
+      description: Identificador único de objetos do tipo Contato
+      required: true
+      schema:
+        type: integer
+  /:
+    get:
+      description: 'Retorna uma lista de registros de acordo com o informado nos parâmetros
+        page e size. Se estes parâmetros não forem passados na consulta, os seguintes
+        valores padrão serão utilizados: page = 0 e size = 10'
+      parameters:
+      - name: size
+        in: query
+        description: Quantidade de registros a ser retornada em uma única página
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: Página onde se encontra o subconjunto de registros desejado
+        required: false
+        schema:
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contato'
+        401:
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          content:
+            application/json:
+              schema:
+                type: string
+    post:
+      summary: Cria um novo objeto do tipo Contato
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                type: string
+        400:
+          content:
+            application/json:
+              schema:
+                type: string
+        401:
+          content:
+            application/json:
+              schema:
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContatoCreate'
+        required: true
+components:
+  schemas:
+    Contato:
+      title: Root Type for Contato
+      description: The root of the Contato type's schema.
+      required:
+      - nome
+      - canal
+      - valor
+      type: object
+      properties:
+        id:
+          description: Identificador único
+          type: string
+        nome:
+          description: Nome que descreva o contato
+          type: string
+        canal:
+          description: Tipo de canal de contato, podendo ser email, celular ou fixo
+          type: string
+        valor:
+          description: Valor para o canal de contato
+          type: string
+        obs:
+          description: Qualquer observação que seja pertinente
+          type: string
+    ContatoUpdate:
+      title: Root Type for ContatoPut
+      description: The root of the ContatoPut type's schema.
+      type: object
+      properties:
+        nome:
+          description: Nome que descreva o contato
+          type: string
+        canal:
+          description: Tipo de canal de contato, podendo ser email, celular ou fixo
+          type: string
+        valor:
+          description: Valor para o canal de contato
+          type: string
+        obs:
+          description: Qualquer observação que seja pertinente
+          type: string
+    ContatoCreate:
+      title: Root Type for ContatoCreate
+      description: The root of the ContatoCreate type's schema.
+      type: object
+      properties:
+        nome:
+          description: Nome que descreva o contato
+          type: string
+        canal:
+          description: Tipo de canal de contato, podendo ser email, celular ou fixo
+          type: string
+        valor:
+          description: Valor para o canal de contato
+          type: string
+        obs:
+          description: Qualquer observação que seja pertinente
+          type: string
