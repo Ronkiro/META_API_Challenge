@@ -8,6 +8,9 @@ com base na OpenAPI 3.0. As especificações foram disponibilizadas no arquivo
 Você pode utilizar a [Live Demo do Swagger](https://editor.swagger.io/) para
 analisar as especificações contidas em *contato.yaml* de forma mais interativa.
 
+Há também a opção de acessar o [contato.md](./contato.md), um documento criado
+usando [swagger-markdown](https://www.npmjs.com/package/swagger-markdown).
+
 ## Instalação
 
 ```
@@ -54,7 +57,7 @@ a execução deste servidor.
 Caso tenha interesse, você pode instalar o certificado do aplicativo usando
 `dotnet dev-certs https --trust`.
 
-**Para mais informações sobre o uso da API, consulte a sua especificação (*contato.yaml*)**
+**Para mais informações sobre o uso da API, consulte a sua especificação (*contato.yaml* ou [contato.md](./contato.md))**
 
 *OBS*: Toda requisição deverá ter um parâmetro "Authorization: TESTAPI" incluída em
 seu cabeçalho para permitir sua execução. Requisições sem este cabeçalho retornarão
